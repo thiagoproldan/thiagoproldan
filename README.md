@@ -3,6 +3,8 @@ Welcome to my GitHub profile! I’m Thiago Roldan, a passionate **Data Scientist
 
 # 🐍 About me in Python:
 ``` Python
+from datetime import datetime
+
 class DataScientist:
     """
     ✨ Class: DataScientist ✨
@@ -32,11 +34,11 @@ class DataScientist:
 
     def recommend_tool(self) -> str:
         """
-        Recommends a tool or technology from the list of all technologies
-        using a pseudo-random selection based on the length of the user's name.
+        Recommends a tool or technology based on the user's name and current time.
         """
         all_techs = [tech for tech_list in self.technologies.values() for tech in tech_list]
-        index = sum(ord(char) for char in self.name) % len(all_techs)
+        current_time = datetime.now().strftime("%Y%m%d%H%M%S")
+        index = (sum(ord(char) for char in self.name + current_time)) % len(all_techs)
         return f"🤖 Today, why not try: {all_techs[index]}?"
 
     def __str__(self) -> str:
